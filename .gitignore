@@ -1,5 +1,9 @@
+# environment variables
+.env*
+
 # Ignore virtual environment folder
 venv/
+*venv*
 
 # Ignore common Python files
 __pycache__/
