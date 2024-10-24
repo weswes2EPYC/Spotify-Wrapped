@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user.spotify_auth_middleware.SpotifySessionMiddleware'
 ]
 
 ROOT_URLCONF = 'Wrapped.urls'
@@ -124,3 +128,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'user.spotify_auth_backend.SpotifyAuthBackend',
+    'django.contrib.auth.backends.ModelBackend'
+]
+
+AUTH_USER_MODEL = 'user.SpotifyUser'
+# SESSION_ENGINE = 'user.SpotifySession'
+SESSION_COOKIE_AGE = 2**31-1
