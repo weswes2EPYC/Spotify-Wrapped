@@ -31,6 +31,12 @@ def login_page(request):
     return render(request, "user/login.html")
 
 @require_GET
+def delete_page(request):
+    if not request.user.is_authenticated:
+        return redirect("/")
+    return render(request, "user/delete_account.html")
+
+@require_GET
 def handleSpotifyRedirect(request):
     query_params = dict(request.GET)
     if "code" not in query_params:
@@ -84,4 +90,13 @@ def handleLogout(request):
         logout(request)
     except:
         pass
+    return redirect("/")
+
+@require_GET
+def handleAccountDelete(request):
+    if request.user.is_authenticated:
+        print("HI")
+        user = request.user
+        logout(request)
+        user.delete()
     return redirect("/")
