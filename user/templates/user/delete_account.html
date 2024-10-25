@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Login - Wrapped</title>
+{% endblock head %}
+
+{% block content %}
+    <div class="flex flex-col gap-12 justify-center items-center w-full p-8 h-[85vh]">
+        <h1 class="text-4xl font-bold">Delete Account?</h1>
+        <a class="button-primary bg-primary-red w-full max-w-[32rem] p-4 text-lg font-semibold text-center"
+            href="/auth/delete">
+            Delete
+        </a>
+    </div>
+{% endblock content %}
+
+<!-- Note: need to change redirect_uri when in production -->

@@ -130,8 +130,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-    'user.spotify_auth_backend.SpotifyAuthBackend',
-    'django.contrib.auth.backends.ModelBackend'
+    'user.spotify_auth_backend.SpotifyAuthBackend'
 ]
 
 AUTH_USER_MODEL = 'user.SpotifyUser'

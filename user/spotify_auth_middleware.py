@@ -36,7 +36,7 @@ class SpotifySessionMiddleware(MiddlewareMixin):
                 expires_in = refresh_token_json["expires_in"]-300 # make sure to refresh 5 minutes early
                 new_refresh_token = refresh_token_json["refresh_token"]
                 expires_at = datetime.datetime.now() + datetime.timedelta(seconds=expires_in)
-                login(request, request.user) # refresh the session
+                login(request, request.user, backend="user.spotify_auth_backend.SpotifyAuthBackend") # refresh the session
                 session["access_token"] = access_token
                 session["expires_at"] = expires_at.timestamp()
                 session["refresh_token"] = new_refresh_token
