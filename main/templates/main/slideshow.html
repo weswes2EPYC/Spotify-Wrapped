@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% load static %} <!-- Load static tag -->
+
+{% block head %}
+<title>Wrapped Slideshow</title>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+{% endblock head %}
+
+{% block content %}
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <!-- Slide 1 My Spotify Wrap -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
+                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">My Spotify Wrapped</h1>
+                    <p class="text-lg text-center">{{ spotify_data.username }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2 Your Favorite Song Was -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
+                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">Your Favorite Song Was...</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Slide 3 without background image -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
+                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-4xl font-bold">{{ spotify_data.tracks.1.name }}</h1>
+                    <p class="text-xl">by {{ spotify_data.tracks.1.artist }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        // autoplay: {
+        //     delay: 9000,  // Change slide every 5 seconds
+        // },
+    });
+</script>
+{% endblock content %}
