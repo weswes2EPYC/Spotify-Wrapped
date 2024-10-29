@@ -12,9 +12,9 @@
     <div class="swiper-wrapper">
         <!-- Slide 1 My Spotify Wrap -->
         <div class="swiper-slide flex items-center justify-center h-[100vh]">
-            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
-                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
-                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.slide1_background }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
                     <h1 class="text-xl font-bold text-center">My Spotify Wrapped</h1>
                     <p class="text-lg text-center">{{ spotify_data.username }}</p>
                 </div>
@@ -23,22 +23,102 @@
 
         <!-- Slide 2 Your Favorite Song Was -->
         <div class="swiper-slide flex items-center justify-center h-[100vh]">
-            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
-                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
-                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.slide2_background }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
                     <h1 class="text-xl font-bold text-center">Your Favorite Song Was...</h1>
                 </div>
             </div>
         </div>
 
 
-        <!-- Slide 3 without background image -->
+        <!-- Slide 3 Favorite Song -->
         <div class="swiper-slide flex items-center justify-center h-[100vh]">
-            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-lg"
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px] relative"
                 style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
-                <div class="bg-black bg-opacity-0 p-4 rounded-lg h-full flex flex-col items-center justify-center text-white">
-                    <h1 class="text-4xl font-bold">{{ spotify_data.tracks.1.name }}</h1>
-                    <p class="text-xl">by {{ spotify_data.tracks.1.artist }}</p>
+                <div class="p-4 rounded-[40px] h-full flex flex-col items-start justify-end text-white absolute bottom-0 left-0 m-10">
+                    <h1 class="text-4xl font-bold">{{ spotify_data.tracks.0.name }}</h1>
+                    <p class="text-xl">by {{ spotify_data.tracks.0.artist }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 Your Top Songs Were -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.slide4_background }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">Your Top Songs Were ...</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 Top 3 Songs -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-full min-w-[500px] sm:w-[30%] h-[70%] rounded-[40px]" style="background-color: #DC8808;">
+                <div class="p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
+                    <div class="pt-5 pb-5 h-full flex flex-col items-center justify-evenly text-white">
+                        <!-- Track Items -->
+                        <div class="flex flex items-start w-full sm:items-center">
+                            <h1 class="text-5xl font-bold w-12 text-center">1</h1>
+                            <img src="{{ spotify_data.tracks.0.album_cover }}" alt=""
+                                class="w-full max-w-[30%] sm:pl-5 sm:pr-5 mb-4 sm:mb-0">
+                            <div class="text-4xl font-bold flex flex-col justify-evenly h-full">
+                                <h1>{{ spotify_data.tracks.0.name }}</h1>
+                                <h1 style="color: #945900">{{ spotify_data.tracks.0.artist }}</h1>
+                            </div>
+                        </div>
+
+                        <div class="flex flex items-start w-full sm:items-center">
+                            <h1 class="text-5xl font-bold w-12 text-center">2</h1>
+                            <img src="{{ spotify_data.tracks.1.album_cover }}" alt=""
+                                class="w-full max-w-[30%] sm:pl-5 sm:pr-5 mb-4 sm:mb-0">
+                            <div class="text-4xl font-bold flex flex-col justify-evenly h-full">
+                                <h1>{{ spotify_data.tracks.1.name }}</h1>
+                                <h1 style="color: #945900">{{ spotify_data.tracks.1.artist }}</h1>
+                            </div>
+                        </div>
+
+                        <div class="flex flex items-start w-full sm:items-center">
+                            <h1 class="text-5xl font-bold w-12 text-center">3</h1>
+                            <img src="{{ spotify_data.tracks.2.album_cover }}" alt=""
+                                class="w-full max-w-[30%] sm:pl-5 sm:pr-5 mb-4 sm:mb-0">
+                            <div class="text-4xl font-bold flex flex-col justify-evenly h-full">
+                                <h1>{{ spotify_data.tracks.2.name }}</h1>
+                                <h1 style="color: #945900">{{ spotify_data.tracks.2.artist }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 Your Favorite Artist Was -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.slide6_background }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">Your Favorite Artist Was ...</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 Favorite Artist -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.tracks.0.album_cover }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">Your Favorite Song Was...</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8 Your Top Artists Were -->
+        <div class="swiper-slide flex items-center justify-center h-[100vh]">
+            <div class="bg-cover bg-center w-[30%] h-[70%] rounded-[40px]"
+                style="background-image: url('{{ spotify_data.slide8_background }}');">
+                <div class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
+                    <h1 class="text-xl font-bold text-center">Your Top Artists Were...</h1>
                 </div>
             </div>
         </div>
@@ -57,7 +137,7 @@
             clickable: true,
         },
         // autoplay: {
-        //     delay: 9000,  // Change slide every 5 seconds
+        //     delay: 9000,  // Change slide every 9 seconds
         // },
     });
 </script>
