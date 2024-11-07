@@ -1,6 +1,6 @@
 {% load static %}
-
-<nav class="px-8 py-4 flex items-center gap-8">
+<!-- Desktop view -->
+<nav class="px-8 py-4 items-center gap-8 hidden sm:flex">
     <a href="/" class="flex flex-row gap-2 items-center">
         <img src="{% static 'spotify_logo.svg' %}" alt="Spotify Logo" class="w-full max-w-8">
         <h3 class="text-lg font-bold">wrapped</h3>
@@ -12,8 +12,8 @@
             <a href="/mywraps" class="nav-link">My Wraps</a>
         </div>
         <div class="ml-auto flex items-center gap-8">
-            <a href="/signup" class="nav-link">Settings</a>
-            <a href="/login" class="text-lg font-bold button-primary">Log out</a>
+            <a href="/settings" class="nav-link">Settings</a>
+            <a href="/auth/logout" class="text-lg font-bold button-primary">Log out</a>
         </div>
     {% else %}
         <div class="ml-auto flex items-center gap-8">
@@ -22,3 +22,60 @@
         </div>
     {% endif %}
 </nav>
+
+<!-- Mobile view -->
+<nav class="px-8 py-4 items-center gap-8 sm:hidden flex h-20">
+    <a href="/" class="flex flex-row gap-2 items-center">
+        <img src="{% static 'spotify_logo.svg' %}" alt="Spotify Logo" class="w-full max-w-10">
+    </a>
+    <button id="open-menu-button" class="ml-auto w-full max-w-8" onclick="openMenu()">
+        <img src="{% static 'hamburger.svg' %}" alt="Open Menu" class="w-full">
+    </button>
+    <button id="close-menu-button" class="ml-auto w-full max-w-8 hidden" onclick="closeMenu()">
+        <img src="{% static 'close_icon.svg' %}" alt="Close Menu" class="w-full">
+    </button>
+    
+</nav>
+<div id="nav-menu" class="w-full h-[calc(100dvh-5rem)] top-20 absolute bg-black opacity-0 invisible [&.active]:opacity-100 [&.active]:visible flex flex-col gap-6 transition-all sm:hidden items-center py-12 text-center px-6">
+    {% if request.user.is_authenticated %}
+        <a href="/create" class="nav-link text-xl">Create</a>
+        <a href="/mywraps" class="nav-link text-xl">My Wraps</a>
+        <a href="/settings" class="nav-link text-xl">Settings</a>
+        <a href="/auth/logout" class="text-xl font-bold button-primary w-full max-w-48 text-center">Log out</a>
+    {% else %}
+        <a href="/signup" class="nav-link text-xl">Sign up</a>
+        <a href="/login" class="text-xl font-bold button-primary w-full max-w-48 text-center">Log in</a>
+    {% endif %}
+</div>    
+
+<script>
+    const openMenuButton = document.getElementById("open-menu-button");
+    const closeButton = document.getElementById("close-menu-button");
+    const navMenu = document.getElementById("nav-menu");
+    let menuOpen = false;
+    function openMenu() {
+        if (!openMenuButton.classList.contains("hidden")) {
+            openMenuButton.classList.add("hidden");
+        }
+        if (closeButton.classList.contains("hidden")) {
+            closeButton.classList.remove("hidden");
+        }
+        if (!navMenu.classList.contains("active")) {
+            navMenu.classList.add("active");
+        }
+        menuOpen = true;
+    }
+    function closeMenu() {
+        if (openMenuButton.classList.contains("hidden")) {
+            openMenuButton.classList.remove("hidden");
+        }
+        if (!closeButton.classList.contains("hidden")) {
+            closeButton.classList.add("hidden");
+        }
+        if (navMenu.classList.contains("active")) {
+            navMenu.classList.remove("active");
+        }
+        menuOpen = false;
+    }
+
+</script>
