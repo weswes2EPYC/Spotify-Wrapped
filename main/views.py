@@ -1,14 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods, require_GET
+from django.templatetags.static import static
+import requests
+import time
+import datetime
+import base64
+import os
 
-# Create your views here.
+SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
+SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
+
 @require_GET
 def home_page(request):
     return render(request, "main/home.html", {})
-
-def wraps_page(request):
-    user_data = {
-        'username': 'eskedie',
-        'wraps': []
-    }
-    return render(request, "main/my_wraps.html", {'user': user_data})
