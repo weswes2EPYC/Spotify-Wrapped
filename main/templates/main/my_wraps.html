@@ -7,20 +7,26 @@
 
 {% block content %}
     <section class="p-6 bg-black text-white text-center">
-        <h1 class="text-5xl font-bold mt-16">Create Your Personalized Wraps!</h1>
-        <button class="bg-green-500 text-black rounded-full px-6 py-2 mt-12 font-medium hover:scale-105">Try it out!</button>
+        <h1 class="text-5xl font-bold mt-16">Welcome back, {{ user.username }}!</h1>
+        <button class="bg-green-500 text-black rounded-full px-6 py-2 mt-12 font-medium hover:scale-105">Create a wrap!</button>
     </section>
 
     <section class="p-12 bg-black text-white">
-        <h2 class="text-3xl mb-4 font-semibold">My Wraps</h2>
+        <div class="mb-9">
+            <h2 class="text-3xl mb-4 font-semibold">My Wraps</h2>
+            <label class="flex items-center space-x-2 text-gray-400 cursor-pointer">
+                <input type="checkbox" class="rounded accent-gray-400 form-checkbox text-black" />
+                <span>Only Show Liked Wraps</span>
+            </label>
+        </div>
         <div class="grid grid-flow-row gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <!-- start of card -->
                 <div class="bg-purple-700 rounded-lg p-6 relative h-64 hover:scale-105">
             
                 <!-- Heart icon-->
-                <div class="absolute top-4 right-4">
-                    <img src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
-                </div>
+                <button class="heartButton absolute top-4 right-4" onclick="toggleHeart(this)">
+                    <img id="heartImage" src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
+                </button>
                 
                 <!-- Text -->
                 <div class="absolute bottom-4 left-4">
@@ -33,9 +39,9 @@
             <div class="bg-purple-700 rounded-lg p-6 relative h-64 hover:scale-105">
         
             <!-- Heart icon-->
-            <div class="absolute top-4 right-4">
-                <img src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
-            </div>
+            <button class="heartButton absolute top-4 right-4" onclick="toggleHeart(this)">
+                <img id="heartImage" src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
+            </button>
             
             <!-- Text -->
             <div class="absolute bottom-4 left-4">
@@ -48,9 +54,9 @@
             <div class="bg-purple-700 rounded-lg p-6 relative h-64 hover:scale-105">
         
             <!-- Heart icon-->
-            <div class="absolute top-4 right-4">
-                <img src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
-            </div>
+            <button class="heartButton absolute top-4 right-4" onclick="toggleHeart(this)">
+                <img id="heartImage" src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
+            </button>
             
             <!-- Text -->
             <div class="absolute bottom-4 left-4">
@@ -63,9 +69,9 @@
         <div class="bg-purple-700 rounded-lg p-6 relative h-64 hover:scale-105">
         
             <!-- Heart icon-->
-            <div class="absolute top-4 right-4">
-                <img src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
-            </div>
+            <button class="heartButton absolute top-4 right-4" onclick="toggleHeart(this)">
+                <img id="heartImage" src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
+            </button>
             
             <!-- Text -->
             <div class="absolute bottom-4 left-4">
@@ -78,9 +84,9 @@
         <div class="bg-purple-700 rounded-lg p-6 relative h-64 hover:scale-105">
         
             <!-- Heart icon-->
-            <div class="absolute top-4 right-4">
-                <img src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
-            </div>
+            <button class="heartButton absolute top-4 right-4" onclick="toggleHeart(this)">
+                <img id="heartImage" src="{% static 'heart_outline.svg' %}" alt="heart" class="w-full max-w-8">
+            </button>
             
             <!-- Text -->
             <div class="absolute bottom-4 left-4">
@@ -91,4 +97,14 @@
         <!-- end of card -->
         </div>
     </section>
+    <script>
+        function toggleHeart(button) {
+            const heartImage = button.querySelector('img');
+            if (heartImage.src.includes('heart_outline.svg')) {
+                heartImage.src = "{% static 'heart_fill.svg' %}";
+            } else {
+                heartImage.src = "{% static 'heart_outline.svg' %}";
+            }
+        }
+    </script>
 {% endblock content %}
