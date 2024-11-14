@@ -1,0 +1,89 @@
+/* Welcome back, Username! */
+.username-welcome {
+    color: white;
+    font-size: 64px;
+    font-family: Inter;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+/* My Wraps */
+.my-wraps {
+    color: white;
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* Create a wrap! */
+.create-wrap {
+    color: black;
+    font-size: 30px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* My Spotify Wrap */
+.my-spotify-wrap {
+    color: white;
+    font-size: 36px;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+/* eskedie */
+.eskedie {
+    color: #B3B3B3;
+    font-size: 28px;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+/* wrapped */
+.wrapped {
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* My Wraps (smaller) */
+.my-wraps-small {
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* Settings */
+.settings {
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* Create (button) */
+.create {
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+/* Log out */
+.log-out {
+    color: black;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}

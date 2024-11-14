@@ -16,6 +16,8 @@ SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 def home_page(request):
     return render(request, "main/home.html", {})
 
+def myWraps(request):
+    return render(request, "main/mywraps.html", {})
 def get_valid_access_token(request):
     access_token = request.session.get('access_token')
     expires_at = request.session.get('expires_at', 0)
