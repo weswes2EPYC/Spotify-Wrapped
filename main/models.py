@@ -10,8 +10,13 @@ class Wrap(models.Model):
     is_public = models.BooleanField(default=False)
 
 def get_wrap(id):
+    print(id)
     wrap = Wrap.objects.get(id=id)
+    print(wrap)
     return wrap
 
 def get_public_wraps():
     return Wrap.objects.filter(is_public=True)
+
+def get_my_wraps(user):
+    return Wrap.objects.filter(user=user)

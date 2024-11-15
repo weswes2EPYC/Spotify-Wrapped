@@ -130,8 +130,8 @@ def create_spotify_wrap(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
-    duration = request.GET.get('duration', '') # long_term, short_term, medium_term? look at api
-    name = request.GET.get('name', '')
+    duration = request.GET.get('duration', 'medium_term') # long_term, short_term, medium_term? look at api
+    name = request.GET.get('name', 'My Spotify Wrap')
     is_public = request.GET.get('is_public', False)
 
     access_token = request.session.get("access_token")
@@ -203,20 +203,36 @@ def view_wrap(request, wrap_id):
     try:
         # Get the wrap by ID, or return a 400 error if not found
         wrap = get_wrap(wrap_id)
+        print("wrap exists")
         
         # Check if the wrap is private and the current user is not the owner
         if not wrap.is_public and wrap.user != request.user:
+            print("wrong user?")
             return redirect("/")
         
         # Prepare the spotify_data to pass to the template
         spotify_data = wrap.wrap_data
+        spotify_data["slide1_background"] = static('Slide1.jpg')
+        spotify_data["slide2_background"] = static('Slide2.jpg')
+        spotify_data["slide4_background"] = static('Slide4.jpg')
+        spotify_data["slide6_background"] = static('Slide6.jpg')
+        spotify_data["slide8_background"] = static('Slide8.jpg')
         
         # Render the template with the spotify_data
         return render(request, 'main/slideshow.html', {'spotify_data': spotify_data})
     
     except Wrap.DoesNotExist:
+        print("wrap no exist")
         # Redirect to home page if the wrap does not exist
         return redirect("/")
     except Exception as e:
+        print(e)
         # Catch any other errors and redirect to home
         return redirect("/")
+    
+
+@require_GET
+def load_create_page(request):
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    return render(request, "main/create_wrap.html", {})
