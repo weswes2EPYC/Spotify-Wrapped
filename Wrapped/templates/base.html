@@ -14,7 +14,11 @@
                 "primary-green": "#1ED760",
                 "text-dark-gray": "#414141",
                 "text-light-gray": "#B3B3B3",
-                "primary-red": "#D82D2D"
+                "primary-red": "#D82D2D",
+                "stroke-gray": "#13151B"
+              },
+              aspectRatio: {
+                '3/2': '3 / 2'
               }
             }
           }
@@ -34,6 +38,11 @@
 
         .nav-link {
           @apply text-lg font-bold transition-all hover:text-text-light-gray;
+        }
+
+        .card-gradient {
+          background: rgb(0,0,0);
+          background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 100%);
         }
       }
       @layer utilities {

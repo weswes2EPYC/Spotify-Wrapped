@@ -6,57 +6,26 @@
 
 {% block content %}
 
-        <div style="width: 100%; height: 100%; position: relative; background: black">
-            <div style="left: 310px; top: 239px; position: absolute; color: white; font-size: 64px; font-weight: 800; word-wrap: break-word">Welcome back, Username!</div>
-            <div style="left: 88px; top: 596px; position: absolute; color: white; font-size: 48px; font-weight: 700; word-wrap: break-word">My Wraps</div>
-            
-            <div style="width: 700px; height: 84px; left: 547px; top: 414px; position: absolute">
-                
-                <style>
-                    .block {
-                      display: block;
-                      border: none;
-                      background-color: #1ED760;
-                      color: black;
-                      padding: 14px 28px;
-                      font-size: 30px;
-                      border-radius: 100px;
-                      cursor: pointer;
-                      text-align: center;
-                    }
-                    
-                    .block:hover {
-                      background-color: #ddd;
-                      color: black;
-                    }
-                    </style>
-                    
-                    
-                    <button class="block">Create a wrap!</button>
-            </div>
-            <div style="width: 600px; height: 400px; left: 82px; top: 702px; position: absolute">
-                <div style="width: 600px; height: 400px; left: 0px; top: 0px; position: absolute; background: #362E8A; border-radius: 25px"></div>
-                <div style="width: 289px; height: 46.93px; left: 38px; top: 278.40px; position: absolute; color: white; font-size: 36px; font-weight: 600; word-wrap: break-word">My Spotify Wrap</div>
-                <div style="width: 106px; height: 36.27px; left: 38px; top: 332.80px; position: absolute; color: #B3B3B3; font-size: 28px; font-weight: 600; word-wrap: break-word">name</div>
-                <div style="width: 52.95px; height: 45px; left: 512px; top: 28px; position: absolute; background: #000000"></div>
-            </div>
-            <div style="width: 600px; height: 400px; left: 758px; top: 702px; position: absolute">
-                <div style="width: 600px; height: 400px; left: 0px; top: 0px; position: absolute; background: #8A2E44; border-radius: 25px"></div>
-                <div style="width: 289px; height: 46.93px; left: 38px; top: 278.40px; position: absolute; color: white; font-size: 36px; font-weight: 600; word-wrap: break-word">My Spotify Wrap</div>
-                <div style="width: 106px; height: 36.27px; left: 38px; top: 332.80px; position: absolute; color: #B3B3B3; font-size: 28px; font-weight: 600; word-wrap: break-word">name</div>
-                <div style="width: 52.95px; height: 45px; left: 509px; top: 28px; position: absolute; background: #D82D7E"></div>
-            </div>
-            <div style="width: 600px; height: 400px; left: 83px; top: 1167px; position: absolute">
-                <div style="width: 600px; height: 400px; left: 0px; top: 0px; position: absolute; background: #005772; border-radius: 25px"></div>
-                <div style="width: 289px; height: 46.93px; left: 38px; top: 278.40px; position: absolute; color: white; font-size: 36px; font-weight: 600; word-wrap: break-word">My Spotify Wrap</div>
-                <div style="width: 106px; height: 36.27px; left: 38px; top: 332.80px; position: absolute; color: #B3B3B3; font-size: 28px; font-weight: 600; word-wrap: break-word">name</div>
-                <div style="width: 52.95px; height: 45px; left: 512px; top: 28px; position: absolute; background: rgb(255, 255, 255)"></div>
-            </div>
-            <div style="width: 600px; height: 400px; left: 758px; top: 1167px; position: absolute">
-                <div style="width: 600px; height: 400px; left: 0px; top: 0px; position: absolute; background: #8A652E; border-radius: 25px"></div>
-                <div style="width: 289px; height: 46.93px; left: 38px; top: 278.40px; position: absolute; color: white; font-size: 36px; font-weight: 600; word-wrap: break-word">My Spotify Wrap</div>
-                <div style="width: 106px; height: 36.27px; left: 38px; top: 332.80px; position: absolute; color: #B3B3B3; font-size: 28px; font-weight: 600; word-wrap: break-word">name</div>
-                <div style="width: 52.95px; height: 45px; left: 509px; top: 28px; position: absolute; background: #D82D7E"></div>
+        <div class="flex flex-col w-full items-center gap-6">
+            <h1 class="mt-12 text-3xl sm:text-5xl sm:mt-24 font-bold text-center">Welcome back!</h1>
+            <a href="/create/" class="mt-6 button-primary sm:text-3xl text-xl py-3 px-8 font-semibold sm:py-4 sm:px-12 sm:mt-12">Create a wrap!</a>
+
+
+
+            <div class="w-full px-8 sm:px-20 mt-6">
+                <h3 class="text-xl sm:text-3xl font-semibold">My Wraps</h3>
+                <!-- Grid Container -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 py-6">
+                    <a href="/wrap/" class="aspect-3/2  rounded-md flex flex-col gap-2 transition-all hover:scale-105 overflow-hidden">
+                        <div class="relative w-full h-full">
+                            <img class="w-full h-full aspect-3/2 object-cover" src="https://preview.redd.it/ksi-reveals-pp-size-v0-ogez1i1aim3b1.png?auto=webp&s=9c2e1be123fcbd6a80b3f61850622d7ee19035eb" alt="ksi">
+                            <div class="absolute flex flex-col top-0 left-0 w-full h-full p-4 z-10 bg-gradient-to-t from-black to-transparent">
+                                <h4 class="mt-auto text-xl font-bold line-clamp-1">My Spotify Wrap</h4>
+                                <h5 class="text-text-light-gray font-medium line-clamp-1">eskedie</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 {% endblock content %}

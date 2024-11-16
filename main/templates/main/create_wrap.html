@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Create a Wrap!</title>
+{% endblock head %}
+
+{% block content %}
+<div class="flex flex-col gap-12 justify-center items-center w-full p-8 h-[85vh]">
+    <div class="p-8 border-2 border-stroke-gray rounded-lg flex flex-col items-center gap-6 w-full max-w-[32rem]">
+        <h1 class="text-4xl font-bold">Create a new wrap!</h1>
+        <form action="/createwrap" method="GET" class="flex flex-col gap-6 w-full">
+            <div class="flex gap-4 flex-col">
+                <div class="flex flex-col gap-2 w-full">
+                    <label for="wrap-name">Wrap Name <span class="text-red-500">*</span></label>
+                    <input required type="text" id="wrap-name" name="name" placeholder="Enter name here" class="bg-transparent outline-none border-[1px] border-stroke-gray rounded-md p-2 placeholder:text-text-dark-gray">
+                </div>
+        
+                <div class="flex flex-col gap-2 items-start">
+                    <label for="wrap-duration">Duration <span class="text-red-500">*</span></label>
+                    <select required name="duration" id="wrap-duration" class="bg-transparent outline-none border-[1px] border-stroke-gray rounded-md p-2">
+                        <option value="long_term" class="bg-stroke-gray outline-none border-0">Past Year</option>
+                        <option value="medium_term" class="bg-stroke-gray outline-none border-0">Past 6 Months</option>
+                        <option value="short_term" class="bg-stroke-gray outline-none border-0">Past Month</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col gap-2 items-start">
+                    <label for="wrap-public">Make Public? <span class="text-red-500">*</span></label>
+                    <select required name="is_public" id="wrap-duration" class="bg-transparent outline-none border-[1px] border-stroke-gray rounded-md p-2">
+                        <option value="True" class="bg-stroke-gray outline-none border-0">Yes</option>
+                        <option value="False" class="bg-stroke-gray outline-none border-0">No</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="button-primary w-full max-w-[32rem] p-4 text-lg font-semibold text-center">
+                Create!
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
