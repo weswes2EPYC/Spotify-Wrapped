@@ -17,7 +17,7 @@ def summarize(artists, songs):
     artist3_name = artists[2]['name']
 
     prompt = f"""
-    Generate me a 150 word or less summary of my Spotify Wrapped. You should include any highlights and other relevant information. Here are my top three songs:
+    Generate me a 100 word or less summary of my Spotify Wrapped. You should include any highlights and other relevant information. Here are my top three songs:
     1) {song1_name} by {song1_artist}
     2) {song2_name} by {song2_artist}
     3) {song3_name} by {song3_artist}
