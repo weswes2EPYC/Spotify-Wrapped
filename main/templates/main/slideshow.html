@@ -13,7 +13,7 @@
             <div class="bg-cover bg-center w-full min-w-[300px] sm:w-[30%] h-[70%] rounded-[40px] relative"
                 style="background-image: url('{{ spotify_data.slide1_background }}');">
                 <div class="p-4 rounded-[40px] h-full flex flex-col items-start justify-end text-white absolute bottom-0 left-0 m-10">
-                    <h1 class="text-4xl font-bold mb-5">My Spotify Wrapped</h1>
+                    <h1 class="text-4xl font-bold mb-5">{{ spotify_data.name }}</h1>
                     <p class="text-4xl text-center truncate">{{ spotify_data.username }}</p>
                 </div>
             </div>
@@ -177,10 +177,12 @@
         <!-- Slide 10 LLM Summary -->
         <div class="swiper-slide flex items-center justify-center h-[90vh] pl-2 pr-2">
             <div class="bg-cover bg-center w-full min-w-[300px] sm:w-[30%] h-[70%] rounded-[40px] relative"
-                style="background-image: url('{{ spotify_data.slide6_background }}');">
+            style="background-image: url('{{ spotify_data.slide6_background }}');"
+                >
                 <div
                     class="bg-black bg-opacity-0 p-4 rounded-[40px] h-full flex flex-col items-center justify-center text-white">
-                    <h1 class="text-xl font-bold text-center overflow-auto max-h-full">{{ spotify_data.summary }}</h1>
+                    <h1 class="text-2xl text-center font-bold mb-4">Summary</h1>
+                    <h3 class="text-lg font-medium text-center overflow-auto max-h-full text-text-light-gray">{{ spotify_data.summary }}</h3>
                 </div>
             </div>
         </div>

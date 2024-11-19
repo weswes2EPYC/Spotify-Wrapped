@@ -200,13 +200,13 @@ def create_spotify_wrap(request):
         'name': name,
         'tracks': tracks,
         'artists': artists,
-        'summary': 'Your Spotify Wrapped Summary'
+        'summary': summarize(artists, tracks)
     }
     
     obj = Wrap.objects.create(user=request.user, wrap_data=spotify_data, is_public=is_public)
     obj.save()
 
-    return HttpResponse("success")
+    return redirect("/mywraps")
 
 @require_GET
 def view_wrap(request, wrap_id):
