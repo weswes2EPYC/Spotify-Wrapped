@@ -14,8 +14,14 @@ SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 
 @require_GET
-def home_page(request):
-    return render(request, "main/home.html", {})
+def home_page(request):    
+    data = get_public_wraps()
+    wraps = []
+    for wrap in data:
+        obj = wrap.wrap_data
+        obj["id"] = wrap.id
+        wraps.append(obj)
+    return render(request, "main/home.html", {"wraps": wraps})
 
 def myWraps(request):
     if (not request.user.is_authenticated):
@@ -246,3 +252,4 @@ def load_create_page(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     return render(request, "main/create_wrap.html", {})
+
