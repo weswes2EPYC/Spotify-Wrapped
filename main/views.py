@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseBadRequest
 from django.views.decorators.http import require_http_methods, require_GET, require_POST
 from django.templatetags.static import static
+from main.LLM import summarize
 import requests
 import time
 import datetime
@@ -128,7 +129,7 @@ def spotify_wrapped_view(request):
         'slide8_background': static('Slide8.jpg'),
         'tracks': tracks,
         'artists': artists,
-        'summary': 'Your Spotify Wrapped Summary'
+        'summary': summarize(artists, tracks)
     }
 
 

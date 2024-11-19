@@ -115,7 +115,7 @@
             <div class="bg-cover bg-center w-full min-w-[300px] sm:w-[30%] h-[70%] rounded-[40px] relative"
                 style="background-image: url('{{ spotify_data.artists.0.artist_image }}');">
                 <div class="p-4 rounded-[40px] h-full text-white flex justify-center items-center">
-                    <h1 class="text-8xl font-bold drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)]">{{ spotify_data.artists.0.name }}</h1>
+                    <h1 class="text-5xl font-bold drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)] truncate">{{ spotify_data.artists.0.name }}</h1>
                 </div>
             </div>
         </div>
@@ -184,6 +184,49 @@
                 </div>
             </div>
         </div>
+
+        <!-- Share on Social Media and return to home button -->
+        <div class="swiper-slide flex items-center justify-center h-[90vh] pl-2 pr-2">
+            <div
+                class="bg-cover bg-center w-full min-w-[300px] sm:w-[30%] h-[70%] rounded-[40px] relative bg-black text-white p-6">
+                <div class="flex flex-col justify-center items-center h-full">
+                    <!-- Return to Home Button -->
+                    <a href="/"
+                        class="button-primary text-white font-bold py-2 px-6 rounded-full mb-6 hover:bg-[#1ed760] transition-all">
+                        Return to Home
+                    </a>
+                    <!-- Social Media Buttons -->
+                    <h1 class="pt-5 text-2xl text-center">Share your Wrapped</h1>
+                    <div class="flex gap-4 pt-2">
+                        <!-- Instagram -->
+                        <button onclick="copyToClipboard('{{ request.build_absolute_uri }}')"
+                            class="text-pink-500 hover:text-pink-600 transition-all text-3xl" title="Copy link for Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"
+                            class="text-blue-600 hover:text-blue-700 transition-all text-3xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}" target="_blank"
+                            class="text-blue-500 hover:text-blue-600 transition-all text-3xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <!-- Twitter Share -->
+                        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text=Check%20out%20my%20Spotify%20Wrapped%20slideshow!"
+                            target="_blank" class="text-blue-400 hover:text-blue-500 transition-all text-3xl" title="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <!-- Copy link to clipboard -->
+                        <button onclick="copyToClipboard('{{ request.build_absolute_uri }}')"
+                            class="text-gray-500 hover:text-gray-700 transition-all text-3xl">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -194,6 +237,14 @@
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Link copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
+
     var swiper = new Swiper('.swiper-container', {
         direction: 'horizontal',
         loop: false,
