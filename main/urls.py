@@ -7,5 +7,6 @@ urlpatterns = [
     path("createwrap/", views.create_spotify_wrap, name="createwrap"),
     path("wrap/<str:wrap_id>/", views.view_wrap, name="view_wrap"),
     path('mywraps/', views.myWraps),
-    path("create/", views.load_create_page)
+    path("create/", views.load_create_page),
+    path("delete/<str:wrap_id>/", views.delete_wrap)
 ]

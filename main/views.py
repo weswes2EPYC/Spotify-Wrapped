@@ -234,6 +234,9 @@ def view_wrap(request, wrap_id):
         spotify_data["slide6_background"] = static('Slide6.jpg')
         spotify_data["slide8_background"] = static('Slide8.jpg')
         spotify_data["summary_background"] = static('Summary.jpg')
+        spotify_data["id"] = wrap_id
+        if (wrap.user == request.user):
+            spotify_data["can_delete"] = True
         
         # Render the template with the spotify_data
         return render(request, 'main/slideshow.html', {'spotify_data': spotify_data})
@@ -254,3 +257,24 @@ def load_create_page(request):
         return redirect('/login')
     return render(request, "main/create_wrap.html", {})
 
+@require_GET
+def delete_wrap(request, wrap_id):
+    try:
+        # Get the wrap by ID, or return a 400 error if not found
+        wrap = get_wrap(wrap_id)
+        if not wrap.user == request.user:
+            return redirect("/")
+        
+        wrap.delete()
+        
+        # Render the template with the spotify_data
+        return redirect("/")
+    
+    except Wrap.DoesNotExist:
+        print("wrap no exist")
+        # Redirect to home page if the wrap does not exist
+        return redirect("/")
+    except Exception as e:
+        print(e)
+        # Catch any other errors and redirect to home
+        return redirect("/")
