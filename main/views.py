@@ -201,9 +201,14 @@ def create_spotify_wrap(request):
         artists.append(artist_info)
 
     # Prepare Spotify Data
+    name_extension = "Past Month"
+    if (duration == "medium_term"):
+        name_extension = "Past 6 Months"
+    elif (duration == "long_term"):
+        name_extension = "Past Year"
     spotify_data = {
         'username': username,
-        'name': name,
+        'name': f"{name} ({name_extension})",
         'tracks': tracks,
         'artists': artists,
         'summary': summarize(artists, tracks)
