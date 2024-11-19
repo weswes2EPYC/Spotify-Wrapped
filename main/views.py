@@ -212,7 +212,7 @@ def create_spotify_wrap(request):
     obj = Wrap.objects.create(user=request.user, wrap_data=spotify_data, is_public=is_public)
     obj.save()
 
-    return redirect("/mywraps")
+    return redirect(f"/wrap/{obj.id}")
 
 @require_GET
 def view_wrap(request, wrap_id):
