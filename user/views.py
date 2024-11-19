@@ -49,7 +49,7 @@ def handleSpotifyRedirect(request):
     }
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": f"Basic {base64.urlsafe_b64encode(bytes(f"{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}", "utf-8")).decode()}"
+        "Authorization": f"Basic {base64.urlsafe_b64encode(bytes(f'{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}', 'utf-8')).decode()}"
     }
     verify_token_response = requests.post("https://accounts.spotify.com/api/token", data=request_body, headers=headers) # i believe this is synchronous
     if verify_token_response.status_code != 200:
