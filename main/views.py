@@ -7,7 +7,7 @@ import time
 import datetime
 import base64
 import os
-from .models import Wrap, get_public_wraps, get_wrap
+from .models import Wrap, get_public_wraps, get_wrap, get_my_wraps
 
 SPOTIFY_CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
@@ -17,7 +17,16 @@ def home_page(request):
     return render(request, "main/home.html", {})
 
 def myWraps(request):
-    return render(request, "main/mywraps.html", {})
+    if (not request.user.is_authenticated):
+        return redirect("/")
+    
+    data = get_my_wraps(request.user)
+    wraps = []
+    for wrap in data:
+        obj = wrap.wrap_data
+        obj["id"] = wrap.id
+        wraps.append(obj)
+    return render(request, "main/mywraps.html", {"wraps": wraps})
 def get_valid_access_token(request):
     access_token = request.session.get('access_token')
     expires_at = request.session.get('expires_at', 0)

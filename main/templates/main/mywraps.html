@@ -16,15 +16,17 @@
                 <h3 class="text-xl sm:text-3xl font-semibold">My Wraps</h3>
                 <!-- Grid Container -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full gap-6 py-6">
-                    <a href="/wrap/" class="aspect-3/2  rounded-md flex flex-col gap-2 transition-all hover:scale-105 overflow-hidden">
-                        <div class="relative w-full h-full">
-                            <img class="w-full h-full aspect-3/2 object-cover" src="https://preview.redd.it/ksi-reveals-pp-size-v0-ogez1i1aim3b1.png?auto=webp&s=9c2e1be123fcbd6a80b3f61850622d7ee19035eb" alt="ksi">
-                            <div class="absolute flex flex-col top-0 left-0 w-full h-full p-4 z-10 bg-gradient-to-t from-black to-transparent">
-                                <h4 class="mt-auto text-xl font-bold line-clamp-1">My Spotify Wrap</h4>
-                                <h5 class="text-text-light-gray font-medium line-clamp-1">eskedie</h5>
+                    {% for wrap in wraps %}
+                        <a href="/wrap/{{ wrap.id }}" class="aspect-3/2  rounded-md flex flex-col gap-2 transition-all hover:scale-105 overflow-hidden">
+                            <div class="relative w-full h-full">
+                                <img class="w-full h-full aspect-3/2 object-cover" src="{{wrap.tracks.0.album_cover}}" alt="">
+                                <div class="absolute flex flex-col top-0 left-0 w-full h-full p-4 z-10 bg-gradient-to-t from-black to-transparent">
+                                    <h4 class="mt-auto text-xl font-bold line-clamp-1">{{ wrap.name }}</h4>
+                                    <h5 class="text-text-light-gray font-medium line-clamp-1">{{ wrap.username }}</h5>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
