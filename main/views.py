@@ -233,6 +233,7 @@ def view_wrap(request, wrap_id):
         spotify_data["slide4_background"] = static('Slide4.jpg')
         spotify_data["slide6_background"] = static('Slide6.jpg')
         spotify_data["slide8_background"] = static('Slide8.jpg')
+        spotify_data["summary_background"] = static('Summary.jpg')
         
         # Render the template with the spotify_data
         return render(request, 'main/slideshow.html', {'spotify_data': spotify_data})
